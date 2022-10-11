@@ -51,8 +51,7 @@
     }
 
     .reset {
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 8px;
     }
   </style>
 </head>
@@ -109,13 +108,13 @@
       const { total, number1, number2 } = state;
       const [number, setNumber] = React.useState("");
       const [count, setCount] = useState(0);
+      const [message, setMessage] = useState("");
 
       // UseEffect va compter le nombre de clics donc au bout de 10 : alert
       useEffect(() => {
           if (count == 10){
             alert("Vous avez atteint le nombre maximum de calculs");
           }
-          console.log("count change", count);
           return () => {
             console.log("update/umount", count);
           };
@@ -137,10 +136,9 @@
       }
 
       function errorMessage(){
-        const number1 = document.getElementById('1').value;
-        const number2 = document.getElementById('2').value;
-        if (!number1 || !number2) {
-          alert("Les deux valeurs doivent être renseignées.");
+        if (!state.number1 || !state.number2) {
+          alert("Veuillez entrer des valeurs");
+          setMessage("Veuillez entrer des valeurs");
         }
       }
 
@@ -152,6 +150,7 @@
 
       return (
         <div className="container ">
+          {message && <p>{message}</p>}
           <h1>CALCULS</h1>
           <div>
             <input id="1" type="number" onChange={handleChange} name="number1" />
@@ -162,7 +161,6 @@
           <button onClick={() => operate(ADD)}>+</button>
           <button onClick={() => operate(MULT)}>x</button>
           <p className="reset"><button onClick={reset}>Reset</button></p>
-
           <p>{total}</p>
         </div>
       );
