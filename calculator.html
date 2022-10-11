@@ -25,17 +25,45 @@
 
     <!-- JS, Popper.js, and jQuery -->
     <style>
+      :root {
+        --background:#2D3B43;
+        --screen:#ADD47E;
+      }
+
+      body {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100vh;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      p {
+        color:var(--screen);
+      }
+
+      input {
+        background-color:var(--screen);
+        border:1px solid rgba(50, 50, 50, 0.933)
+      }
+
       .special {
         margin-top: 20%;
         text-align: center;
         height: 50px;
         line-height: 20px;
       }
+
+      #root {
+        background-color:var(--background);
+        padding-top:4%;
+      }
     </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+    </div>
     <script type="text/babel">
       const { createRoot } = ReactDOM;
       const { useState, useEffect, useReducer } = React;
