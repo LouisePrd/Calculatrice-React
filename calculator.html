@@ -53,6 +53,13 @@
     .reset {
       margin-top: 8px;
     }
+
+    #message {
+      color: red;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 
@@ -137,11 +144,12 @@
 
       function errorMessage(){
         if (!state.number1 || !state.number2) {
-          alert("Veuillez entrer des valeurs");
+          alert("Erreur : aucune valeur ne peut être nulle");
           setMessage("Veuillez entrer des valeurs");
         }
       }
 
+       // Operate prend en entrée le type d'opération et déclenche toutes les actions liées au clic
       function operate(operation) {
         setCount(count + 1);
         dispatch({ type: operation });
@@ -150,7 +158,7 @@
 
       return (
         <div className="container ">
-          {message && <p>{message}</p>}
+          {message && <p id="message">{message}</p>}
           <h1>CALCULS</h1>
           <div>
             <input id="1" type="number" onChange={handleChange} name="number1" />
