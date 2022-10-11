@@ -47,6 +47,7 @@
     h1 {
       color: white;
       font-size: 1.85em;
+      font-family: Impact, fantasy;
     }
 
     .reset {
@@ -137,15 +138,15 @@
 
       return (
         <div className="container ">
-          <h1>CAlcuLatRice</h1>
+          <h1>CALCULS</h1>
           <div>
             <input type="number" onChange={handleChange} name="number1" />
           </div>
           <div>
             <input type="number" onChange={handleChange} name="number2" />
           </div><br></br>
-          <button onClick={() => dispatch({ type: ADD })}>+</button>
-          <button onClick={() => dispatch({ type: MULT })}>x</button>
+          <button onClick={() => dispatch({ type: ADD })}> + </button>
+          <button onClick={() => dispatch({ type: MULT })}> x </button>
           <p className="reset"><button onClick={reset}>Reset</button></p>
 
           <p>{total}</p>
