@@ -107,13 +107,25 @@
       const [state, dispatch] = useReducer(reducer, initialState);
       const { total, number1, number2 } = state;
       const [number, setNumber] = React.useState("");
+      const [count, setCount] = useState(0);
 
+      // UseEffect va compter le nombre de clics donc au bout de 10 : alert
+      useEffect(() => {
+          if (count == 10){
+            alert("Vous avez atteint le nombre maximum de calculs");
+          }
+          console.log("count change", count);
+          return () => {
+            console.log("update/umount", count);
+          };
+        }, [count]);
 
       function handleChange(e) {
         const { value, name } = e.target;
         dispatch({ type: SET_NUMBER, name: name, value });
       }
 
+      // Fonction qui permet de reset les valeurs avec state
       const reset = () => {
         dispatch({ type: SET_NUMBER, name: "number1", value: "" });
         dispatch({ type: SET_NUMBER, name: "number2", value: "" });
