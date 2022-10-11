@@ -140,13 +140,14 @@
         const number1 = document.getElementById('1').value;
         const number2 = document.getElementById('2').value;
         if (!number1 || !number2) {
-          alert("no");
+          alert("Les deux valeurs doivent être renseignées.");
         }
       }
 
       function operate(operation) {
         setCount(count + 1);
         dispatch({ type: operation });
+        errorMessage();
       }
 
       return (
