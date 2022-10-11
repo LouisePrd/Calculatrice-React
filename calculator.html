@@ -136,17 +136,30 @@
         );
       }
 
+      function errorMessage(){
+        const number1 = document.getElementById('1').value;
+        const number2 = document.getElementById('2').value;
+        if (!number1 || !number2) {
+          alert("no");
+        }
+      }
+
+      function operate(operation) {
+        setCount(count + 1);
+        dispatch({ type: operation });
+      }
+
       return (
         <div className="container ">
           <h1>CALCULS</h1>
           <div>
-            <input type="number" onChange={handleChange} name="number1" />
+            <input id="1" type="number" onChange={handleChange} name="number1" />
           </div>
           <div>
-            <input type="number" onChange={handleChange} name="number2" />
+            <input id="2" type="number" onChange={handleChange} name="number2" />
           </div><br></br>
-          <button onClick={() => dispatch({ type: ADD })}> + </button>
-          <button onClick={() => dispatch({ type: MULT })}> x </button>
+          <button onClick={() => operate(ADD)}>+</button>
+          <button onClick={() => operate(MULT)}>x</button>
           <p className="reset"><button onClick={reset}>Reset</button></p>
 
           <p>{total}</p>
